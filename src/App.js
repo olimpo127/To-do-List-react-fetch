@@ -115,9 +115,9 @@ function ToDoApp() {
         </form>
         <div>
           {tasks.length > 0 ? (
-            tasks.map((t, index) => (
+            tasks.map((task, index) => (
               <div key={index} style={{ display: "flex", justifyContent: "space-between", border: "1px solid black", padding: "10px" }}>
-                <p>{t.label}</p>
+                <p>{task.label}</p>
                 <button style={{ padding: "5px", border: "none" }} onClick={() => handleDelete(index)}>X</button>
               </div>
             ))
