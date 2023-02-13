@@ -11,12 +11,13 @@ function ToDoApp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task !== "") {
-      setTasks([...tasks, {label: task, done: false}]);
+      setTasks([...tasks, { label: task, done: false }]);
       setTask("");
       fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127")
         .then((res) => res.json())
         .then((data) => {
           const updatedTasks = [...data, { label: task, done: false }];
+          console.log("Task added:", updatedTasks);
           return updatedTasks;
         })
         .then((updatedTasks) => {
@@ -38,13 +39,15 @@ function ToDoApp() {
     setTasks(newTasks);
     fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
       method: "PUT",
-      body: JSON.stringify([{newTasks}]),
+      body: JSON.stringify(newTasks),
       headers: {
         "Content-Type": "application/json"
       }
     })
       .then(res => res.json())
-      .then(data => console.log("Task deleted:", data))
+      .then(data => {
+        console.log("Task deleted:", newTasks);
+      })
       .catch(err => console.error(err));
   };
 
@@ -78,9 +81,12 @@ function ToDoApp() {
   const getTasks = () => {
     fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127")
       .then((res) => res.json())
-      .then((data) => setTasks(data))
+      .then((data) => {
+        console.log("Tasks Loaded:", data);
+        setTasks(data);
+      })
       .catch((error) => console.log(error));
-  }
+  };
 
   useEffect(() => {
     //createToDoUser();
