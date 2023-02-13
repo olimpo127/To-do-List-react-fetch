@@ -11,7 +11,7 @@ function ToDoApp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task !== "") {
-      setTasks([...tasks, task]);
+      setTasks([...tasks, {label: task, done: false}]);
       setTask("");
       fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127")
         .then((res) => res.json())
@@ -78,7 +78,7 @@ function ToDoApp() {
   const getTasks = () => {
     fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127")
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setTasks(data))
       .catch((error) => console.log(error));
   }
 
@@ -111,7 +111,7 @@ function ToDoApp() {
           {tasks.length > 0 ? (
             tasks.map((t, index) => (
               <div key={index} style={{ display: "flex", justifyContent: "space-between", border: "1px solid black", padding: "10px" }}>
-                <p>{t}</p>
+                <p>{t.label}</p>
                 <button style={{ padding: "5px", border: "none" }} onClick={() => handleDelete(index)}>X</button>
               </div>
             ))
