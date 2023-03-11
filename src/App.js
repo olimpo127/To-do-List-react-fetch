@@ -79,10 +79,10 @@ function ToDoApp() {
   };*/
 
   const getTasks = () => {
-    fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127")
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Tasks Loaded:", data);
+        console.log("Get tasks:", data);
         setTasks(data);
       })
       .catch((error) => console.log(error));
@@ -128,6 +128,7 @@ function ToDoApp() {
         <p style={{ fontSize: "10px", marginTop: "10px" }}>
           {tasks.length} item{tasks.length === 1 ? "" : "s"} left
         </p>
+        <button onClick={getTasks}>Get Tasks</button>
         <button onClick={handleDeleteAll}>Delete all tasks</button>
       </div>
     </div>
