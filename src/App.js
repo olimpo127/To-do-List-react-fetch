@@ -37,7 +37,7 @@ function ToDoApp() {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks(newTasks);
-    fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
       method: "PUT",
       body: JSON.stringify(newTasks),
       headers: {
@@ -53,7 +53,7 @@ function ToDoApp() {
 
   const handleDeleteAll = () => {
     setTasks([]);
-    fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
       method: "PUT", 
       body: JSON.stringify([{label: "none", done: false}]),
       headers: {
@@ -66,7 +66,7 @@ function ToDoApp() {
   };
 
   /*const createToDoUser = () => {
-    fetch("http://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/olimpo127", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
