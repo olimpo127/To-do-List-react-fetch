@@ -122,7 +122,7 @@ function ToDoApp() {
               </div>
             ))
           ) : (
-            <p style={{ border: "1px solid grey", background: "blue", padding: "10px" }}><strong>No tasks, add a task</strong></p>
+            <p style={{ border: "1px solid grey", background: "red", padding: "10px" }}><strong>No tasks, add a task</strong></p>
           )}
         </div>
         <p style={{ fontSize: "10px", marginTop: "10px" }}>
